@@ -1,0 +1,26 @@
+{
+  "name": "dubizzle-eg-scraper",
+  "version": "1.0.0",
+  "description": "Dubizzle Egypt real estate scraper using Puppeteer with SQLite persistence",
+  "main": "index.js",
+  "scripts": {
+    "start":                   "node index.js",
+    "scrape:all":              "node index.js --pages 10",
+    "scrape:apartments-sale":  "node index.js --category apartments-for-sale --pages 10",
+    "scrape:apartments-rent":  "node index.js --category apartments-for-rent --pages 10",
+    "scrape:villas-sale":      "node index.js --category villas-for-sale --pages 10",
+    "scrape:villas-rent":      "node index.js --category villas-for-rent --pages 5",
+    "scrape:full":             "node index.js --pages 10 --detail --concurrency 3",
+    "stats":                   "node -e \"const {getStats}=require('./src/db'); console.table(getStats());\""
+  },
+  "keywords": ["scraper", "puppeteer", "real-estate", "dubizzle", "egypt"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "better-sqlite3": "^12.6.2",
+    "puppeteer": "^24.38.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "winston": "^3.19.0"
+  }
+}
