@@ -170,7 +170,7 @@ export const fetchDashboardData = createServerFn({ method: 'GET' }).handler(
               COUNT(*) as count,
               (SELECT price/area_sqm FROM listings l2 WHERE l2.city=l1.city AND l2.listing_type='for_sale' AND l2.price IS NOT NULL AND l2.area_sqm > 0 ORDER BY l2.price/l2.area_sqm LIMIT 1 OFFSET (SELECT COUNT(*)/2 FROM listings l3 WHERE l3.city=l1.city AND l3.listing_type='for_sale' AND l3.price IS NOT NULL AND l3.area_sqm > 0)) as median_price
              FROM listings l1
-             WHERE listing_type='for_sale' AND city IS NOT NULL AND city != '' AND area_sqm > 0
+             WHERE listing_type='for_sale' AND city IS NOT NULL AND city != '' AND price IS NOT NULL AND area_sqm > 0
              GROUP BY city HAVING count >= 3 ORDER BY median_price DESC LIMIT 12`,
           )
           .all<{ city: string; count: number; median_price: number }>(),
